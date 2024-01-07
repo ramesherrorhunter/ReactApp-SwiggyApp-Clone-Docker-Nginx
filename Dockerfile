@@ -1,23 +1,18 @@
-# Use Node.js 16 slim as the base image
-FROM node:16
-
-# Set the working directory
+#Pull base node image from docker registry & define multi-build
+FROM node:latest as artifact
 WORKDIR /app
-
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code
-COPY . .
-
-# Build the React app
+COPY . /app
+RUN npm install --silent
+RUN npm install react-scripts@5.0.1 -g --silent
+COPY . /app
 RUN npm run build
 
-# Expose port 3000 (or the port your app is configured to listen on)
-EXPOSE 3000
+#Pull base nginx image from docker registry
+FROM nginx:latest
+WORKDIR /usr/share/nginx/html
 
-# Start your Node.js server (assuming it serves the React app)
-CMD ["npm", "start"]
+#copy artifact from node to nginx
+
+COPY --from=artifact /app/build /usr/share/nginx/html
+EXPOSE 9001
+CMD ["nginx","-g","daemon off;"]

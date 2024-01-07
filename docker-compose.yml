@@ -1,0 +1,8 @@
+version: "3.3"
+services: 
+  swiggy-app:
+    container_name: swiggy-app1
+    build: .
+    ports: 
+      - "9001:9001"
+
