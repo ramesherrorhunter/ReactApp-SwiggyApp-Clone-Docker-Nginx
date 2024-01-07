@@ -6,7 +6,7 @@
 
 **Docker Container run Command**
 <br>
-`Docker-compose up -d`
+`docker-compose up -d`
 
 **Open browser and type below URL**
 <br>
