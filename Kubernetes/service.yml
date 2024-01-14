@@ -8,6 +8,6 @@ spec:
   type: NodePort
   ports:
   - port: 9001
-    targetPort: 9001
+    targetPort: 80
   selector:
     app: swiggy-app
