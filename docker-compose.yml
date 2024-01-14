@@ -4,5 +4,5 @@ services:
     container_name: swiggy-app1
     build: .
     ports: 
-      - "9001:9001"
+      - "9001:80"
 
