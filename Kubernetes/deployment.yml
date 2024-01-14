@@ -20,4 +20,4 @@ spec:
         image: errorhunter/swiggy-clone:latest
         imagePullPolicy: "Always"
         ports:
-        - containerPort: 9001
+        - containerPort: 80
