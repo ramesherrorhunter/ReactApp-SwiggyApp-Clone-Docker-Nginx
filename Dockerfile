@@ -14,5 +14,5 @@ WORKDIR /usr/share/nginx/html
 #copy artifact from node to nginx
 
 COPY --from=artifact /app/build /usr/share/nginx/html
-EXPOSE 9001
+EXPOSE 9001 80
 CMD ["nginx","-g","daemon off;"]
